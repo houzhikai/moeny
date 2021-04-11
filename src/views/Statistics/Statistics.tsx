@@ -1,14 +1,14 @@
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import {RecordItem, useRecords} from '../../hooks/useRecords'
 import {useTags} from '../../hooks/useTags'
 import {day} from '../../component/Day'
-import Layout from '../../component/Layout'
 import {TypeSection} from '../Money/TypeSction'
 import {Echarts} from '../../component/Echarts'
 import NoPage from '../Detail/NoPage'
 import {IconBox} from '../Detail/IconBox'
 import Icon from '../../component/icon'
+import Layout from 'component/Layout'
 
 const StaWrapper = styled.div`
   display: flex;
@@ -162,7 +162,7 @@ const List = styled.div`
     height: 100%;
   }
 `
-const Statistics = () => {
+const Component = () => {
     const stateMap = {'-': '支出', '+': '收入'}
     const [category, setCategory] = useState<'-' | '+'>('-')
     const {records} = useRecords()
@@ -227,8 +227,8 @@ const Statistics = () => {
         array.length && setDateSelect(array[array.length - 1][0])
     }, [array.length, selected])
     const dateDecorate = (date: string) => {
-        let nowdate = new Date().toISOString()
-        if (date === timeRule(nowdate)) {
+        let nowDate = new Date().toISOString()
+        if (date === timeRule(nowDate)) {
             return dateDec()
         } else {
             return date
@@ -258,7 +258,7 @@ const Statistics = () => {
                         </div> : ''
                     }
                 </TypeWrapper>
-                {/* 周月年 */}
+
                 <Duration>
                     {durationList.map(item =>
                         <li key={item}
@@ -272,21 +272,21 @@ const Statistics = () => {
 
                 <List className='date-list'>
                     <Header>
-                        {array.length === 0 ? <span className='selected'>
-              {dateDec()}
-            </span> : array.map(([date]) =>
+                        {array.length === 0 ?
+                            <span className='selected'>{dateDec()}</span> :
+                            array.map(([date, records]) =>
                                 <span key={date}
                                       className={dateSelect === date ? 'selected' : ''}
                                       onClick={() => setDateSelect(date)}>
-                {dateDecorate(date)}
-              </span>
-                        )
+                                        {dateDecorate(date)}
+                                </span>
+                            )
                         }
                     </Header>
 
                     {hash[dateSelect] === undefined ? <section>
                             <Echarts option={[]} selected={selected}/>
-                            <ul className='maxHeight'>
+                            <ul className='maxheight'>
                                 <li className='list-title'>支出排行榜</li>
                                 <NoPage/>
                             </ul>
@@ -314,4 +314,4 @@ const Statistics = () => {
         </Layout>
     )
 }
-export {Statistics}
+export default Component

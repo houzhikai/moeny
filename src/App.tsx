@@ -11,7 +11,7 @@ import NoMatch from "./views/NoMatch";
 import styled from "styled-components";
 import {Detail} from "./views/Detail";
 import Tag from './views/Tag'
-import {Statistics} from './views/Statistics/Statistics'
+import Statistics from './views/Statistics/Statistics'
 
 //所有的字的默认颜色是 #333
 const AppWrapper = styled.div`

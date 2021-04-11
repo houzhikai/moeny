@@ -1,4 +1,3 @@
-
 import React from "react";
 import styled from "styled-components";
 import Icon from "../../component/icon";
@@ -29,6 +28,8 @@ const NumberSection = styled.section`
         padding-right: 1px;
       }
       &.OK {
+        float: right;
+        height: 92px;
         background: #ffda44;
       }
       &:active {
@@ -106,9 +107,7 @@ const Component: React.FC<Props> = (props) => {
                     setOutput(output + text)
                 }
                 break;
-            case '今天':
-                console.log('今天')
-                break;
+
             case 'OK':
                 if(props.onOk){
                     props.onOk()
@@ -134,11 +133,11 @@ const Component: React.FC<Props> = (props) => {
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-                <button>00</button>
-                <button>.</button>
-                <button>0</button>
-                <button> <Icon name='calendar'/>今天</button>
                 <button className="OK">OK</button>
+                <button>0</button>
+                <button>.</button>
+                <button>00</button>
+
             </div>
         </NumberSection>
     )
