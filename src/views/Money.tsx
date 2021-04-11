@@ -4,8 +4,10 @@ import {useRecords} from '../hooks/useRecords'
 import Layout from '../component/Layout'
 import CategorySection from './Money/CategorySection'
 import {TagsSection} from './Money/TagsSection'
-import NoteSection from './Money/NoteSection'
-import NumberSection from './Money/NumberSection'
+import {NumberSection} from './Money/NumberSection'
+import {NoteSection} from './Money/NoteSection'
+
+
 const MyLayout = styled(Layout)`
   display: flex;
   flex-direction: column;
